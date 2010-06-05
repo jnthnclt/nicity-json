@@ -41,35 +41,43 @@ public class JBinarySchemaDataReader {
      */
     public JBinarySchemaDataReader(final InputStream _schema,final InputStream _data) {
         schema = new IReadable() {
+            @Override
             public int read() throws IOException {
                 return _schema.read();
             }
 
+            @Override
             public int read(byte[] b) throws IOException {
                 return _schema.read(b);
             }
 
+            @Override
             public int read(byte[] b, int _offset, int _len) throws IOException {
                 return _schema.read(b, _offset, _len);
             }
 
+            @Override
             public void close() throws IOException {
                 _schema.close();
             }
         };
         data = new IReadable() {
+            @Override
             public int read() throws IOException {
                 return _data.read();
             }
 
+            @Override
             public int read(byte[] b) throws IOException {
                 return _data.read(b);
             }
 
+            @Override
             public int read(byte[] b, int _offset, int _len) throws IOException {
                 return _data.read(b, _offset, _len);
             }
 
+            @Override
             public void close() throws IOException {
                 _data.close();
             }

@@ -112,6 +112,7 @@ public class AJSONGZipper extends HttpServletResponseWrapper {
         GZIPServletOutputStream(ServletOutputStream sos) throws IOException {
             this.internalGzipOS = new GZIPOutputStream(sos);
         }
+        @Override
         public void write(int param) throws IOException {
             internalGzipOS.write(param);
         }

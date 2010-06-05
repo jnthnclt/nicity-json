@@ -51,6 +51,7 @@ public final class Jnull extends AJ {
    * @param bw
    * @throws IOException
    */
+    @Override
   protected void toBinary(ABinaryWriter bw) throws IOException {
       
   }

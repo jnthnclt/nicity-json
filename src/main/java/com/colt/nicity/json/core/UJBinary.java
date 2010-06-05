@@ -70,46 +70,55 @@ public class UJBinary {
     }
     static {
         cPrimativeTypeToReader.put(String.class,new IReadJv() {
+            @Override
             public Object read(IReadable _r) throws Exception {
                 return new String(UIO.readByteArray(_r,"v"),Charset.forName("UTF-8"));
             }
         });
         cPrimativeTypeToReader.put(Boolean.class,new IReadJv() {
+            @Override
             public Object read(IReadable _r) throws Exception {
                 return UIO.readBoolean(_r,"v");
             }
         });
         cPrimativeTypeToReader.put(Byte.class,new IReadJv() {
+            @Override
             public Object read(IReadable _r) throws Exception {
                 return UIO.readByte(_r,"v");
             }
         });
         cPrimativeTypeToReader.put(Character.class,new IReadJv() {
+            @Override
             public Object read(IReadable _r) throws Exception {
                 return UIO.readChar(_r,"v");
             }
         });
         cPrimativeTypeToReader.put(Short.class,new IReadJv() {
+            @Override
             public Object read(IReadable _r) throws Exception {
                 return UIO.readShort(_r,"v");
             }
         });
         cPrimativeTypeToReader.put(Integer.class,new IReadJv() {
+            @Override
             public Object read(IReadable _r) throws Exception {
                 return UIO.readInt(_r,"v");
             }
         });
         cPrimativeTypeToReader.put(Long.class,new IReadJv() {
+            @Override
             public Object read(IReadable _r) throws Exception {
                 return UIO.readLong(_r,"v");
             }
         });
         cPrimativeTypeToReader.put(Float.class,new IReadJv() {
+            @Override
             public Object read(IReadable _r) throws Exception {
                 return UIO.readFloat(_r,"v");
             }
         });
         cPrimativeTypeToReader.put(Double.class,new IReadJv() {
+            @Override
             public Object read(IReadable _r) throws Exception {
                 return UIO.readDouble(_r,"v");
             }
@@ -118,46 +127,55 @@ public class UJBinary {
 
         ///
         cPrimativeTypeToWriter.put(String.class,new IWriteJv() {
+            @Override
             public void write(IWriteable _w, Object _v) throws IOException {
                 UIO.writeByteArray(_w,((String)_v).getBytes(Charset.forName("UTF-8")), "v");
             }
         });
         cPrimativeTypeToWriter.put(Boolean.class,new IWriteJv() {
+            @Override
             public void write(IWriteable _w, Object _v) throws IOException {
                 UIO.writeBoolean(_w,(Boolean)_v, "v");
             }
         });
         cPrimativeTypeToWriter.put(Byte.class,new IWriteJv() {
+            @Override
             public void write(IWriteable _w, Object _v) throws IOException {
                 UIO.writeByte(_w,(Byte)_v, "v");
             }
         });
         cPrimativeTypeToWriter.put(Character.class,new IWriteJv() {
+            @Override
             public void write(IWriteable _w, Object _v) throws IOException {
                 UIO.writeChar(_w,(Character)_v, "v");
             }
         });
         cPrimativeTypeToWriter.put(Short.class,new IWriteJv() {
+            @Override
             public void write(IWriteable _w, Object _v) throws IOException {
                 UIO.writeShort(_w,(Short)_v, "v");
             }
         });
         cPrimativeTypeToWriter.put(Integer.class,new IWriteJv() {
+            @Override
             public void write(IWriteable _w, Object _v) throws IOException {
                 UIO.writeInt(_w,(Integer)_v, "v");
             }
         });
         cPrimativeTypeToWriter.put(Long.class,new IWriteJv() {
+            @Override
             public void write(IWriteable _w, Object _v) throws IOException {
                 UIO.writeLong(_w,(Long)_v, "v");
             }
         });
         cPrimativeTypeToWriter.put(Float.class,new IWriteJv() {
+            @Override
             public void write(IWriteable _w, Object _v) throws IOException {
                 UIO.writeFloat(_w,(Float)_v, "v");
             }
         });
         cPrimativeTypeToWriter.put(Double.class,new IWriteJv() {
+            @Override
             public void write(IWriteable _w, Object _v) throws IOException {
                 UIO.writeDouble(_w,(Double)_v, "v");
             }

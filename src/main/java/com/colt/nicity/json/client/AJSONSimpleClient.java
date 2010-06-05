@@ -60,6 +60,7 @@ public class AJSONSimpleClient extends ASetObject implements IJSONService {
      *
      * @return
      */
+    @Override
     public Object hashObject() {
         return serviceUrl;
     }
@@ -113,6 +114,7 @@ public class AJSONSimpleClient extends ASetObject implements IJSONService {
       * @param _request
       * @param _responce
       */
+    @Override
      public void request(IOut _, Jo _request,final IAsyncResponse<Jo> _responce) {
         try {
             String stringToReverse = URLEncoder.encode(_request.toString(), "UTF-8");

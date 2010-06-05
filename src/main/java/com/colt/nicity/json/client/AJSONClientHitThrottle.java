@@ -91,6 +91,7 @@ public class AJSONClientHitThrottle {
         UJson.add(request,"request","ratelimit");
 
         service.request(_,request, new IAsyncResponse<Jo>() {
+            @Override
             public void response(IOut _,Jo response) {
                 try {
                     expires = UJson.getLong(response,"expires");
@@ -99,6 +100,7 @@ public class AJSONClientHitThrottle {
                     error(_,x);
                 }
             }
+            @Override
             public void error(IOut _,Throwable _t) {
                 _t.printStackTrace();
             }

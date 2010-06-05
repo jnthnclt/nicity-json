@@ -40,35 +40,43 @@ public class JBinaryWriter extends ABinaryWriter {
      */
     public JBinaryWriter(final OutputStream _os) {
         os = new IWriteable() {
+            @Override
             public void write(int b) throws IOException {
                 _os.write(b);
             }
+            @Override
             public void write(byte[] b) throws IOException {
                 _os.write(b);
             }
+            @Override
             public void write(byte[] b, int _offset, int _len) throws IOException {
                 _os.write(b, _offset, _len);
             }
+            @Override
             public void close() throws IOException {
                 _os.flush();//??
                 _os.close();
             }
         };
     }
+    @Override
     void appendArray(int length) throws IOException {
         UIO.writeByte(os, UJBinary.cArrayValue, "class");
         UIO.writeInt(os, length, "length");
     }
 
+    @Override
     void appendObject(int fieldCount) throws IOException {
         UIO.writeByte(os, UJBinary.cObjectValue, "class");
         UIO.writeInt(os, fieldCount, "count");
     }
 
+    @Override
     void appendKey(String key) throws IOException {
         UIO.writeByteArray(os, key.getBytes(Charset.forName("UTF-8")), "key");
     }
 
+    @Override
     void appendValue(Object value) throws IOException {
         if (value == null) {
             UIO.writeByte(os, UJBinary.cNullValue, "class");

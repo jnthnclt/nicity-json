@@ -61,6 +61,7 @@ public final class Ja extends AJ implements Iterable<AJ> {
   public int size() {
     return elements.size();
   }
+    @Override
   public Iterator<AJ> iterator() {
     return elements.iterator();
   }
@@ -100,6 +101,7 @@ public final class Ja extends AJ implements Iterable<AJ> {
    * @param bw
    * @throws IOException
    */
+    @Override
   protected void toBinary(ABinaryWriter bw) throws IOException {
       Object[] copy = elements.toArray();
       bw.appendArray(copy.length);

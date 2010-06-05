@@ -40,18 +40,22 @@ public class JBinaryReader {
      */
     public JBinaryReader(final InputStream _is) {
         is = new IReadable() {
+            @Override
             public int read() throws IOException {
                 return _is.read();
             }
 
+            @Override
             public int read(byte[] b) throws IOException {
                 return _is.read(b);
             }
 
+            @Override
             public int read(byte[] b, int _offset, int _len) throws IOException {
                 return _is.read(b, _offset, _len);
             }
 
+            @Override
             public void close() throws IOException {
                 _is.close();
             }

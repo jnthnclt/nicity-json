@@ -48,9 +48,11 @@ public class HelloJSONClient {
             UJson.add(jo,"data","Hello JSON Servlet");
 
             service.request(_, jo, new IAsyncResponse<Jo>() {
+                @Override
                 public void response(IOut _,Jo json) {
                     System.out.println(json.toString());
                 }
+                @Override
                 public void error(IOut _,Throwable _t) {
                     _t.printStackTrace();
                 }

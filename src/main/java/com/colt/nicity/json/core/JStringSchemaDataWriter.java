@@ -97,6 +97,7 @@ public class JStringSchemaDataWriter extends AStringWriter {
      *
      * @throws IOException
      */
+    @Override
     public void openCurly() throws IOException {
         schema.append('{');
         schemaHash = hash(schemaHash,Character.toString('{'));
@@ -105,6 +106,7 @@ public class JStringSchemaDataWriter extends AStringWriter {
      *
      * @throws IOException
      */
+    @Override
     public void closeCurly() throws IOException {
         schema.append('}');
         schemaHash = hash(schemaHash,Character.toString('}'));
@@ -113,6 +115,7 @@ public class JStringSchemaDataWriter extends AStringWriter {
      *
      * @throws IOException
      */
+    @Override
     public void openBrace() throws IOException {
         schema.append('[');
         schemaHash = hash(schemaHash,Character.toString('['));
@@ -121,6 +124,7 @@ public class JStringSchemaDataWriter extends AStringWriter {
      *
      * @throws IOException
      */
+    @Override
     public void closeBrace() throws IOException {
         schema.append(']');
         schemaHash = hash(schemaHash,Character.toString(']'));
@@ -129,6 +133,7 @@ public class JStringSchemaDataWriter extends AStringWriter {
      *
      * @throws IOException
      */
+    @Override
     public void newline() throws IOException {
     }
     /**
@@ -136,6 +141,7 @@ public class JStringSchemaDataWriter extends AStringWriter {
      * @param csq
      * @throws IOException
      */
+    @Override
     public void key(CharSequence csq) throws IOException {
         schema.append(csq);
         schemaHash = hash(schemaHash,csq);
@@ -145,6 +151,7 @@ public class JStringSchemaDataWriter extends AStringWriter {
      * @param csq
      * @throws IOException
      */
+    @Override
     public void value(CharSequence csq) throws IOException {
         schema.append("v");//?? is this abs needed
         data.append(csq);
@@ -155,6 +162,7 @@ public class JStringSchemaDataWriter extends AStringWriter {
      * @param c
      * @throws IOException
      */
+    @Override
     public void append(char c) throws IOException {
         schema.append(c);
         schemaHash = hash(schemaHash,Character.toString(c));

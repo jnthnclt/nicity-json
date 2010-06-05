@@ -101,6 +101,7 @@ public final class Jo extends AJ {
    * @param bw
    * @throws IOException
    */
+    @Override
   public void toBinary(ABinaryWriter bw) throws IOException {
       Set<Entry<String, AJ>> set = fields.entrySet();
       bw.appendObject(set.size());

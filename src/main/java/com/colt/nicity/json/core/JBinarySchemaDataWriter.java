@@ -43,21 +43,25 @@ public class JBinarySchemaDataWriter extends ABinaryWriter {
      */
     public JBinarySchemaDataWriter(final OutputStream _schema,final OutputStream _data) {
         schema = new IWriteable() {
+            @Override
             public void write(int b) throws IOException {
                 if (_schema == null) return;
                 _schema.write(b);
                 schemaHash = hash(schemaHash,UIO.intBytes(b), 0, 4);
             }
+            @Override
             public void write(byte[] b) throws IOException {
                 if (_schema == null) return;
                 _schema.write(b);
                 schemaHash = hash(schemaHash,b, 0, b.length);
             }
+            @Override
             public void write(byte[] b, int _offset, int _len) throws IOException {
                 if (_schema == null) return;
                 _schema.write(b, _offset, _len);
                 schemaHash = hash(schemaHash,b, _offset, _len);
             }
+            @Override
             public void close() throws IOException {
                 if (_schema == null) return;
                 _schema.flush();//??
@@ -65,15 +69,19 @@ public class JBinarySchemaDataWriter extends ABinaryWriter {
             }
         };
         data = new IWriteable() {
+            @Override
             public void write(int b) throws IOException {
                 _data.write(b);
             }
+            @Override
             public void write(byte[] b) throws IOException {
                 _data.write(b);
             }
+            @Override
             public void write(byte[] b, int _offset, int _len) throws IOException {
                 _data.write(b, _offset, _len);
             }
+            @Override
             public void close() throws IOException {
                 _data.flush();//??
                 _data.close();
@@ -107,20 +115,24 @@ public class JBinarySchemaDataWriter extends ABinaryWriter {
 
 
 
+    @Override
     void appendArray(int length) throws IOException {
         UIO.writeByte(schema, UJBinary.cArrayValue, "class");
         UIO.writeInt(data, length, "length");
     }
 
+    @Override
     void appendObject(int fieldCount) throws IOException {
         UIO.writeByte(schema, UJBinary.cObjectValue, "class");
         UIO.writeInt(data, fieldCount, "count");
     }
 
+    @Override
     void appendKey(String key) throws IOException {
         UIO.writeByteArray(schema, key.getBytes(Charset.forName("UTF-8")), "key");
     }
 
+    @Override
     void appendValue(Object value) throws IOException {
         if (value == null) {
             UIO.writeByte(schema, UJBinary.cNullValue, "class");

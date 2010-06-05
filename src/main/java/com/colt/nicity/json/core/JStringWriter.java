@@ -54,6 +54,7 @@ public class JStringWriter extends AStringWriter {
      *
      * @throws IOException
      */
+    @Override
     public void openCurly() throws IOException {
         addDent = true;
         addDent();
@@ -65,6 +66,7 @@ public class JStringWriter extends AStringWriter {
      *
      * @throws IOException
      */
+    @Override
     public void closeCurly() throws IOException {
         addDent = true;
         indent--;
@@ -75,6 +77,7 @@ public class JStringWriter extends AStringWriter {
      *
      * @throws IOException
      */
+    @Override
     public void openBrace() throws IOException {
         addDent();
         sb.append('[');
@@ -84,6 +87,7 @@ public class JStringWriter extends AStringWriter {
      *
      * @throws IOException
      */
+    @Override
     public void closeBrace() throws IOException {
         indent--;
         addDent();
@@ -93,6 +97,7 @@ public class JStringWriter extends AStringWriter {
      *
      * @throws IOException
      */
+    @Override
     public void newline() throws IOException {
         addDent = true;
         if (indention > 0) sb.append('\n');
@@ -102,6 +107,7 @@ public class JStringWriter extends AStringWriter {
      * @param csq
      * @throws IOException
      */
+    @Override
     public void key(CharSequence csq) throws IOException {
         addDent();
         sb.append(csq);
@@ -111,6 +117,7 @@ public class JStringWriter extends AStringWriter {
      * @param csq
      * @throws IOException
      */
+    @Override
     public void value(CharSequence csq) throws IOException {
         addDent();
         sb.append(csq);
@@ -121,6 +128,7 @@ public class JStringWriter extends AStringWriter {
      * @param c
      * @throws IOException
      */
+    @Override
     public void append(char c) throws IOException {
         sb.append(c);
     }
