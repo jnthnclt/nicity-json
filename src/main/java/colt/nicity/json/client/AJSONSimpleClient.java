@@ -128,11 +128,8 @@ public class AJSONSimpleClient extends ASetObject implements IJSONService {
             AJSONResponce r = new AJSONResponce(connection);
             int responseCode = connection.getResponseCode();
             if (responseCode != OK) {
-                if (responseCode < INTERNAL_SERVER_ERROR) {
-                    _responce.error(_,new RuntimeException(getCause(responseCode) + "\n"));
-                    return;
-                }
-                // will retry if the status code is INTERNAL_SERVER_ERROR
+                _responce.error(_,new RuntimeException(getCause(responseCode) + "\n"));
+                return;
             } else {
                 try {
                     _responce.response(_,r.asJSONObject());
@@ -142,7 +139,7 @@ public class AJSONSimpleClient extends ASetObject implements IJSONService {
             }
         }
         catch (Exception x) {
-            x.printStackTrace();
+            _responce.error(_, x);
         }
     }
 }

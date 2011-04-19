@@ -22,44 +22,12 @@
 package colt.nicity.json.core;
 
 import java.io.IOException;
-import java.io.StringReader;
 
 /**
 *
 * @author Jonathan Colt
 */
 public class JStringSchemaDataWriter extends AStringWriter {
-    /**
-     *
-     * @param _arg
-     * @throws Exception
-     */
-    public static void main(String[] _arg) throws Exception {
-        Jo jo = new Jo();
-        UJson.add(jo, "firstName","John");
-        UJson.add(jo,"lastName","Doe");
-        UJson.add(jo,"age",30);
-        UJson.add(jo,"happy",true);
-
-        Ja ja = new Ja();
-        UJson.add(ja, new long[]{1,2,3,4,5,6,7,8,9});
-        UJson.add(jo,"count",ja);
-
-
-        StringBuffer schema = new StringBuffer();
-        StringBuffer data = new StringBuffer();
-        JStringSchemaDataWriter w = new JStringSchemaDataWriter(schema,data);
-
-        jo.toString(w);
-        System.out.println("schema=\n"+schema+"\n");
-        System.out.println("data=\n"+data+"\n");
-
-        JStringSchemaDataReader r = new JStringSchemaDataReader(new StringReader(schema.toString()), new StringReader(data.toString()));
-        jo = r.readJo(new Jo());
-
-        System.out.println(jo.toString());
-
-    }
 
 
     static JStringSchemaDataWriter defaultWriter() {
